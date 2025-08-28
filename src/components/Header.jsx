@@ -1,5 +1,5 @@
 import React from "react";
-
+import logo from '../assets/logo.jpg'
 export default function Header({ darkMode, setDarkMode }) {
   return (
     <div className="header">
@@ -21,9 +21,9 @@ export default function Header({ darkMode, setDarkMode }) {
         </button>
 
         <img
-          src="https://via.placeholder.com/32"
+          src={logo}
           alt="User"
-          style={{ borderRadius: "50%" }}
+          style={{ borderRadius: "50%",height:32,width:32 }}
         />
       </div>
     </div>
