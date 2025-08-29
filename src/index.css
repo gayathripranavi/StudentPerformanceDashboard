@@ -253,14 +253,16 @@ body.dark, .app.dark {
     word-wrap: break-word;
   }
 
-  /* Chart scrollable */
+  /* ✅ Chart full width on mobile */
   .chart-wrapper {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    width: 100% !important;
+    height: auto !important;
+    padding: 0.5rem;
   }
 
   .chart-wrapper > div {
-    min-width: 500px;
+    width: 100% !important;
+    min-width: unset !important; /* removed 500px */
   }
 }
 
