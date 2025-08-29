@@ -178,41 +178,17 @@ div[style*="position: fixed"] > div {
     text-align: center;
   }
 
-  /* ✅ Mobile-friendly card table */
-  table, thead, tbody, th, td, tr {
+  /* Table scrollable */
+  table {
     display: block;
-    width: 100% !important;
+    overflow-x: auto;
   }
 
-  thead {
-    display: none; /* hide headers */
+  table th, table td {
+    white-space: nowrap;
   }
 
-  tr {
-    margin-bottom: 1rem;
-    background: #1e1e1e;
-    border: 1px solid #ff6600;
-    border-radius: 8px;
-    padding: 0.5rem;
-  }
-
-  td {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem;
-    border: none;
-  }
-
-  td::before {
-    content: attr(data-label);
-    font-weight: bold;
-    color: #ff6600;
-    margin-right: 0.5rem;
-  }
-}
-
-/* Make chart scrollable on small screens */
-@media (max-width: 768px) {
+  /* Chart scrollable */
   .chart-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
