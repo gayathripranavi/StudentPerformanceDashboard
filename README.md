@@ -72,6 +72,6 @@ StudentPerformanceDashboard/
 Built with  by Gayathri M
 <img width="1366" height="768" alt="Image" src="https://github.com/user-attachments/assets/b87c3509-c352-4f59-9d0a-8612b10b0215" />
 <img width="1366" height="768" alt="Image" src="https://github.com/user-attachments/assets/5d8bcba4-7fd0-45bf-ae8d-c5e6c0e064d3" />
-<img src="https://raw.githubusercontent.com/username/repository/branch/path/to/image.png" alt="Description" width="500" height="200">
+![Image](https://github.com/user-attachments/assets/080644bb-7427-4c28-b373-236227904beb)
 
 
