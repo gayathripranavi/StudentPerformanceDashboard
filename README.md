@@ -1,5 +1,5 @@
 
-# 🎓 Student Performance Dashboard
+#  Student Performance Dashboard
 
 A responsive web dashboard built with **React** to visualize and manage student performance data.  
 Includes **filters, sorting, search, charts, modal popups for details, and a dark mode toggle** with persistence.
@@ -29,7 +29,7 @@ Includes **filters, sorting, search, charts, modal popups for details, and a dar
 
 
 
-## ⚡ Setup Instructions
+##  Setup Instructions
 
 1. **Clone the repository**
    

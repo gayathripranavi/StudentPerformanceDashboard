@@ -4,17 +4,19 @@ import {
 } from 'recharts';
 
 export default function SubjectChart({ data }) {
+  console.log(data);
   return (
-    <div style={{ width: '100%', height: 300 }}>
-      <ResponsiveContainer>
-        <BarChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="subject" />
-          <YAxis />
-          <Tooltip />
-          <Bar dataKey="avgScore" fill="#52796f" name="Avg Score" />
-        </BarChart>
-      </ResponsiveContainer>
-    </div>
-  );
+  <div className="chart-wrapper" style={{ width: '100%', height: 300 }}>
+    <ResponsiveContainer>
+      <BarChart data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="subject" angle={0} textAnchor="end" interval={0} />
+        <YAxis />
+        <Tooltip />
+        <Bar dataKey="avgScore" fill="#ff6600" name="Avg Score" />
+      </BarChart>
+    </ResponsiveContainer>
+  </div>
+);
+
 }

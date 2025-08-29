@@ -46,6 +46,7 @@ function App() {
   });
 
   //  save theme to localStorage whenever it changes
+
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
   }, [darkMode]);
@@ -60,7 +61,11 @@ function App() {
         return sortDirection === "asc" ? res : -res;
       });
   }, [search, subjectFilter, gradeFilter, sortKey, sortDirection]);
-console.log(filtered)
+
+  //console.log(filtered)
+
+// calculate chart data:
+
   const chartData = useMemo(() => {
     const grouping = {};
     filtered.forEach((s) => {
@@ -68,6 +73,9 @@ console.log(filtered)
       grouping[s.subject].total += s.score;
       grouping[s.subject].count++;
     });
+
+    //convert object to array
+
     return Object.entries(grouping).map(([subj, val]) => ({
       subject: subj,
       avgScore: +(val.total / val.count).toFixed(1),
