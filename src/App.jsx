@@ -19,9 +19,9 @@ const studentData = [
   { id: 4, name: "Meera", subject: "Math", score: 100, grade: "A" },
   { id: 5, name: "Nithya", subject: "Science", score: 74, grade: "C" },
   { id: 6, name: "John", subject: "Math", score: 50, grade: "D" },
-  { id: 7, name: "Dev", subject: "Computer", score: 76, grade: "C" },
+  // { id: 7, name: "Dev", subject: "Computer", score: 76, grade: "C" },
   { id: 8, name: "Rohit", subject: "Tamil", score: 100, grade: "A" },
-  { id: 9, name: "Surya", subject: "Computer", score: 60, grade: "D" },
+  // { id: 9, name: "Surya", subject: "Computer", score: 60, grade: "D" },
   { id: 10, name: "Sri", subject: "Tamil", score: 100, grade: "A" },
 ];
 
