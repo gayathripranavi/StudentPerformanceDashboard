@@ -178,14 +178,16 @@ div[style*="position: fixed"] > div {
     text-align: center;
   }
 
-  /* Table scrollable */
+  /* ✅ Table full width on mobile */
   table {
-    display: block;
-    overflow-x: auto;
+    width: 100% !important;
+    display: table !important;
+    table-layout: auto;
   }
 
   table th, table td {
-    white-space: nowrap;
+    white-space: normal;
+    word-wrap: break-word;
   }
 
   /* Chart scrollable */
@@ -195,6 +197,6 @@ div[style*="position: fixed"] > div {
   }
 
   .chart-wrapper > div {
-    min-width: 500px; /* force chart to keep enough width */
+    min-width: 500px;
   }
 }
