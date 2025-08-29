@@ -264,25 +264,22 @@ body.dark, .app.dark {
   }
 }
 
-/* ✅ Tooltip text color fix (always black) */
+/* ✅ Chart labels & tooltip fix */
 .recharts-tooltip-wrapper,
-.recharts-tooltip-item,
 .recharts-default-tooltip,
 .recharts-label tspan,
-.recharts-text {
-  color: #000 !important;
+.recharts-text,
+.recharts-tooltip-item {
+  color: #000 !important;   /* Light mode */
   fill: #000 !important;
   font-weight: 600;
 }
 
-/* ✅ Fix for modal text in dark mode */
-.app.dark .modal-content {
-  background: #1e1e1e;
-  color: #fff;
-}
-
-.app.dark .modal-header,
-.app.dark .modal-body,
-.app.dark .modal-footer {
-  color: #fff;
+.app.dark .recharts-tooltip-wrapper,
+.app.dark .recharts-default-tooltip,
+.app.dark .recharts-label tspan,
+.app.dark .recharts-text,
+.app.dark .recharts-tooltip-item {
+  color: #000000 !important;   /* Dark mode */
+  fill: #fff !important;
 }
