@@ -97,7 +97,6 @@ table {
   border-radius: 8px;
   overflow: hidden;
   color: #fff;
-  
 }
 
 table th, table td {
@@ -179,6 +178,7 @@ div[style*="position: fixed"] > div {
     text-align: center;
   }
 
+  /* Table scrollable */
   table {
     display: block;
     overflow-x: auto;
@@ -187,9 +187,8 @@ div[style*="position: fixed"] > div {
   table th, table td {
     white-space: nowrap;
   }
-}
-/* Make chart scrollable on small screens */
-@media (max-width: 768px) {
+
+  /* Chart scrollable */
   .chart-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
