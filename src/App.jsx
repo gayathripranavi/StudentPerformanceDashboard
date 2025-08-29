@@ -1,8 +1,5 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import "./index.css";
-
-//these are custom components:
-
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Filters from "./components/Filters";
@@ -10,61 +7,36 @@ import StudentTable from "./components/StudentTable";
 import SubjectChart from "./components/SubjectChart";
 import StudentModal from "./components/StudentModal";
 
-//student details:
-
 const studentData = [
-  { id: 1, name: "Abi", subject: "Math", score: 78, grade: "C" },
-  { id: 2, name: "Sharma", subject: "Science", score: 88, grade: "B" },
-  { id: 3, name: "Josh", subject: "English", score: 92, grade: "A" },
-  { id: 4, name: "Meera", subject: "Math", score: 100, grade: "A" },
-  { id: 5, name: "Nithya", subject: "Science", score: 74, grade: "C" },
-  { id: 6, name: "John", subject: "Math", score: 50, grade: "D" },
-  // { id: 7, name: "Dev", subject: "Computer", score: 76, grade: "C" },
-  { id: 8, name: "Rohit", subject: "Tamil", score: 100, grade: "A" },
-  // { id: 9, name: "Surya", subject: "Computer", score: 60, grade: "D" },
-  { id: 10, name: "Sri", subject: "Tamil", score: 100, grade: "A" },
+  { id: 1, name: "Aarav", subject: "Math", score: 85, grade: "A" },
+  { id: 2, name: "Diya", subject: "Science", score: 78, grade: "B" },
+  { id: 3, name: "Karan", subject: "English", score: 92, grade: "A" },
+  { id: 4, name: "Maya", subject: "Math", score: 67, grade: "C" },
+  { id: 5, name: "Ravi", subject: "Science", score: 88, grade: "A" },
+  { id: 6, name: "Ishita", subject: "History", score: 81, grade: "B" },   
 ];
 
-function App() {
-  
-  //states declaration:
-
-  const [search, setSearch] = useState("");        
+export default function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  const [search, setSearch] = useState("");
   const [subjectFilter, setSubjectFilter] = useState("All");
   const [gradeFilter, setGradeFilter] = useState("All");
-  const [sortKey, setSortKey] = useState("name");
-  const [sortDirection, setSortDirection] = useState("asc");
-
-  //  modal state
   const [selectedStudent, setSelectedStudent] = useState(null);
-
-  //  dark mode state (load from localStorage if exists)
-  const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem("darkMode");    
-   // console.log(saved);
-    return saved ? JSON.parse(saved) : false;            
-  });
-
-  //  save theme to localStorage whenever it changes
-
-  useEffect(() => {
-    localStorage.setItem("darkMode", JSON.stringify(darkMode));
-  }, [darkMode]);
+  const [sortKey, setSortKey] = useState("id");
+  const [sortOrder, setSortOrder] = useState("asc");
 
   const filtered = useMemo(() => {
     return studentData
-      .filter((s) => (subjectFilter === "All" ? true : s.subject === subjectFilter))
+      .filter((s) =>
+        subjectFilter === "All" ? true : s.subject === subjectFilter
+      )
       .filter((s) => (gradeFilter === "All" ? true : s.grade === gradeFilter))
       .filter((s) => s.name.toLowerCase().includes(search.toLowerCase()))
       .sort((a, b) => {
         let res = a[sortKey] > b[sortKey] ? 1 : -1;
-        return sortDirection === "asc" ? res : -res;
+        return sortOrder === "asc" ? res : -res;
       });
-  }, [search, subjectFilter, gradeFilter, sortKey, sortDirection]);
-
-  //console.log(filtered)
-
-// calculate chart data:
+  }, [search, subjectFilter, gradeFilter, sortKey, sortOrder]);
 
   const chartData = useMemo(() => {
     const grouping = {};
@@ -73,9 +45,6 @@ function App() {
       grouping[s.subject].total += s.score;
       grouping[s.subject].count++;
     });
-
-    //convert object to array
-
     return Object.entries(grouping).map(([subj, val]) => ({
       subject: subj,
       avgScore: +(val.total / val.count).toFixed(1),
@@ -83,11 +52,10 @@ function App() {
   }, [filtered]);
 
   return (
-    <div className={`app ${darkMode ? "dark" : "light"}`}>
+    <div className={`app ${darkMode ? "dark" : ""}`}>
       <Sidebar />
-      <div className="main">
+      <main className="main">
         <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-
         <div className="content">
           <Filters
             search={search}
@@ -97,30 +65,29 @@ function App() {
             gradeFilter={gradeFilter}
             onGradeFilter={setGradeFilter}
           />
-          <SubjectChart data={chartData} />
 
+          {/* ✅ Chart comes first */}
+          <div className="chart-wrapper">
+            <SubjectChart data={chartData} />
+          </div>
+
+          {/* ✅ Then table */}
           <StudentTable
             data={filtered}
-            sortKey={sortKey}
-            sortDirection={sortDirection}
             onSort={(key) => {
-              if (key === sortKey) setSortDirection((prev) => (prev === "asc" ? "desc" : "asc"));
-              else {
-                setSortKey(key);
-                setSortDirection("asc");
-              }
+              setSortKey(key);
+              setSortOrder(sortOrder === "asc" ? "desc" : "asc");
             }}
-            onRowClick={(student) => setSelectedStudent(student)}
-          />
-
-          <StudentModal
-            student={selectedStudent}
-            onClose={() => setSelectedStudent(null)}
+            onRowClick={setSelectedStudent}
           />
         </div>
-      </div>
+      </main>
+      {selectedStudent && (
+        <StudentModal
+          student={selectedStudent}
+          onClose={() => setSelectedStudent(null)}
+        />
+      )}
     </div>
   );
 }
-
-export default App;

@@ -1,33 +1,29 @@
-import React from 'react';
+import React from "react";
 import {
-  ResponsiveContainer,
   BarChart,
-  CartesianGrid,
+  Bar,
   XAxis,
   YAxis,
+  CartesianGrid,
   Tooltip,
-  Bar
-} from 'recharts';
+  ResponsiveContainer,
+} from "recharts";
 
 export default function SubjectChart({ data }) {
   return (
-    <div className="chart-wrapper">
-      <ResponsiveContainer>
-        <BarChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          {/* ✅ make labels rotate for responsiveness */}
-          <XAxis 
-            dataKey="subject" 
-            angle={0} 
-            textAnchor="end" 
-            interval={0} 
-            height={60} 
-          />
-          <YAxis />
-          <Tooltip />
-          <Bar dataKey="avgScore" fill="#ff6600" name="Avg Score" />
-        </BarChart>
-      </ResponsiveContainer>
-    </div>
+    <ResponsiveContainer width="100%" height={300}>
+      <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 50 }}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis 
+          dataKey="subject" 
+          interval={0} 
+          angle={0} 
+          textAnchor="end" 
+        />
+        <YAxis />
+        <Tooltip />
+        <Bar dataKey="avgScore" fill="#ff6600" />
+      </BarChart>
+    </ResponsiveContainer>
   );
 }

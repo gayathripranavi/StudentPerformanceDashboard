@@ -6,9 +6,9 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
-  background-color: #ffffff; /* light mode */
-  color: #000000;
-  height: 100%;
+  background-color: #ffffff; /* light mode background */
+  color: #000000;            /* light mode text */
+  height: 100%;              /* ensure full dark background */
 }
 
 /* App layout */
@@ -32,6 +32,7 @@ body, html {
   margin-bottom: 2rem;
   font-size: 1.3rem;
   font-weight: 600;
+  color: inherit;
 }
 
 .sidebar nav a {
@@ -39,18 +40,20 @@ body, html {
   text-decoration: none;
   margin-bottom: 1rem;
   display: block;
+  transition: 0.3s;
 }
 
 .sidebar nav a:hover {
   color: #ff6600;
+  transform: translateX(5px);
 }
 
-/* Main */
+/* Main content */
 .main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #f9f9f9;
+  background-color: #f9f9f9; /* light mode */
   color: inherit;
 }
 
@@ -62,11 +65,13 @@ body, html {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
 .header h1 {
   font-size: 1.5rem;
   font-weight: 600;
+  color: inherit;
 }
 
 .header button {
@@ -74,6 +79,7 @@ body, html {
   color: #ff6600 !important;
   border: 1px solid #ff6600 !important;
   font-weight: 500;
+  transition: 0.3s;
 }
 
 .header button:hover {
@@ -85,50 +91,65 @@ body, html {
 .content {
   padding: 1rem;
   overflow-y: auto;
+  color: inherit;
 }
 
-/* Table */
+/* Table styles */
 table {
   width: 100%;
   border-collapse: collapse;
-  background: #fff;
+  background: #ffffff;
   border-radius: 8px;
   overflow: hidden;
+  color: inherit;
   border: 1px solid #ddd;
 }
 
 table th, table td {
   padding: 0.75rem;
   text-align: left;
+  color: inherit; /* ✅ ensure text visible */
 }
 
 table th {
   background: #ff6600;
   color: #fff;
+  cursor: pointer;
 }
 
 table tr:nth-child(even) {
   background: #f2f2f2;
 }
 
-/* Chart wrapper */
+table tr:hover {
+  background: rgba(255, 102, 0, 0.1);
+}
+
+/* Modal */
+div[style*="position: fixed"] > div {
+  background: #fff !important;
+  color: #000 !important;
+  border: 2px solid #ff6600;
+}
+
+/* ✅ Chart wrapper background */
 .chart-wrapper {
   width: 100%;
   height: 300px;
-  background: #fff;
+  background: #ffffff; /* light mode */
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 /* ---------------- DARK MODE ---------------- */
-.app.dark {
-  background-color: #000;
+body.dark, .app.dark {
+  background-color: #000; /* ✅ full body black */
   color: #fff;
 }
 
 .app.dark .main {
-  background-color: #000;
+  background-color: #000; /* ✅ content area black */
 }
 
 .app.dark .sidebar {
@@ -136,8 +157,17 @@ table tr:nth-child(even) {
   color: #fff;
 }
 
+.app.dark .sidebar nav a {
+  color: #fff;
+}
+
 .app.dark .header {
   background: #111;
+  border-bottom: 2px solid #ff6600;
+  color: #fff;
+}
+
+.app.dark .header h1 {
   color: #fff;
 }
 
@@ -149,7 +179,8 @@ table tr:nth-child(even) {
 
 .app.dark table {
   background: #1e1e1e;
-  color: #fff;
+  color: #fff;   /* ✅ student names visible */
+  border: none;
 }
 
 .app.dark table tr:nth-child(even) {
@@ -158,18 +189,39 @@ table tr:nth-child(even) {
 
 .app.dark table th {
   background: #ff6600;
+  color: #fff;
 }
 
+.app.dark div[style*="position: fixed"] > div {
+  background: #000 !important;
+  color: #ff6600 !important;
+  border: 2px solid #ff6600;
+}
+
+/* ✅ Dark mode chart background */
 .app.dark .chart-wrapper {
-  background: #000;
+  background: #000000;
   box-shadow: 0 2px 6px rgba(255,255,255,0.1);
 }
 
-/* Responsive */
+/* Responsive: Tablets */
+@media (max-width: 1024px) {
+  .sidebar {
+    min-width: 180px;
+    padding: 1rem;
+  }
+
+  .header h1 {
+    font-size: 1.3rem;
+  }
+}
+
+/* Responsive: Mobiles */
 @media (max-width: 768px) {
   .app {
     flex-direction: column;
   }
+
   .sidebar {
     width: 100%;
     flex-direction: row;
@@ -177,23 +229,69 @@ table tr:nth-child(even) {
     align-items: center;
     padding: 0.8rem 1rem;
   }
+
   .sidebar nav {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
   }
+
+  .header {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
   table {
     width: 100% !important;
+    display: table !important;
+    table-layout: auto;
   }
+
+  table th, table td {
+    white-space: normal;
+    word-wrap: break-word;
+  }
+
+  /* Chart scrollable */
   .chart-wrapper {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .chart-wrapper > div {
+    min-width: 500px;
   }
 }
 
-/* ✅ Tooltip styles (always black text on white bg) */
+/* ✅ Chart labels & tooltip fix */
 .recharts-tooltip-wrapper,
 .recharts-default-tooltip,
+.recharts-label tspan,
+.recharts-text,
 .recharts-tooltip-item {
-  color: #000 !important;
+  color: #000 !important;   /* Light mode */
   fill: #000 !important;
+  font-weight: 600;
+}
+
+.app.dark .recharts-tooltip-wrapper,
+.app.dark .recharts-default-tooltip,
+.app.dark .recharts-label tspan,
+.app.dark .recharts-text,
+.app.dark .recharts-tooltip-item {
+  color: #fff !important;   /* Dark mode */
+  fill: #fff !important;
+}
+
+/* ✅ Fix for modal text in dark mode */
+.app.dark .modal-content {
+  background: #1e1e1e;
+  color: #fff;
+}
+
+.app.dark .modal-header,
+.app.dark .modal-body,
+.app.dark .modal-footer {
+  color: #fff;
 }
