@@ -70,3 +70,5 @@ StudentPerformanceDashboard/
 
 ## Author
 Built with  by Gayathri M
+
+![Dashboard Screenshot](assets/logo.jpg)
