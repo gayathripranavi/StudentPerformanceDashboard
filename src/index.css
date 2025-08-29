@@ -6,8 +6,9 @@ body, html {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
-  background-color: #121212; /* black background */
-  color: #f5f5f5;
+  background-color: #ffffff; /* light mode background */
+  color: #000000;            /* light mode text */
+  height: 100%;              /* ensure full dark background */
 }
 
 /* App layout */
@@ -19,8 +20,8 @@ body, html {
 /* Sidebar */
 .sidebar {
   min-width: 220px;
-  background: linear-gradient(180deg, #000, #ff6600);
-  color: #fff;
+  background: linear-gradient(180deg, #ffffff, #ff6600);
+  color: #000;
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
@@ -31,10 +32,11 @@ body, html {
   margin-bottom: 2rem;
   font-size: 1.3rem;
   font-weight: 600;
+  color: inherit;
 }
 
 .sidebar nav a {
-  color: #fff;
+  color: inherit;
   text-decoration: none;
   margin-bottom: 1rem;
   display: block;
@@ -51,27 +53,29 @@ body, html {
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: #181818;
+  background-color: #f9f9f9; /* light mode */
+  color: inherit;
 }
 
 /* Header */
 .header {
   background: #ff6600;
-  color: #fff;
+  color: #000;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
 .header h1 {
   font-size: 1.5rem;
   font-weight: 600;
+  color: inherit;
 }
 
 .header button {
-  background: #000 !important;
+  background: #fff !important;
   color: #ff6600 !important;
   border: 1px solid #ff6600 !important;
   font-weight: 500;
@@ -80,28 +84,31 @@ body, html {
 
 .header button:hover {
   background: #ff6600 !important;
-  color: #000 !important;
+  color: #fff !important;
 }
 
 /* Content */
 .content {
   padding: 1rem;
   overflow-y: auto;
+  color: inherit;
 }
 
 /* Table styles */
 table {
   width: 100%;
   border-collapse: collapse;
-  background: #1e1e1e;
+  background: #ffffff;
   border-radius: 8px;
   overflow: hidden;
-  color: #fff;
+  color: inherit;
+  border: 1px solid #ddd;
 }
 
 table th, table td {
   padding: 0.75rem;
   text-align: left;
+  color: inherit; /* ✅ ensure text visible */
 }
 
 table th {
@@ -111,33 +118,90 @@ table th {
 }
 
 table tr:nth-child(even) {
-  background: #2a2a2a;
+  background: #f2f2f2;
 }
 
 table tr:hover {
-  background: rgba(255, 102, 0, 0.2);
+  background: rgba(255, 102, 0, 0.1);
 }
 
 /* Modal */
 div[style*="position: fixed"] > div {
-  background: #000 !important;
-  color: #ff6600 !important;
+  background: #fff !important;
+  color: #000 !important;
   border: 2px solid #ff6600;
 }
 
-/* Dark Mode */
-.app.dark {
-  background-color: #000;
-  color: #eee;
+/* ✅ Chart wrapper background */
+.chart-wrapper {
+  width: 100%;
+  height: 300px;
+  background: #ffffff; /* light mode */
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* ---------------- DARK MODE ---------------- */
+body.dark, .app.dark {
+  background-color: #000; /* ✅ full body black */
+  color: #fff;
+}
+
+.app.dark .main {
+  background-color: #000; /* ✅ content area black */
 }
 
 .app.dark .sidebar {
   background: linear-gradient(180deg, #000, #ff6600);
+  color: #fff;
+}
+
+.app.dark .sidebar nav a {
+  color: #fff;
 }
 
 .app.dark .header {
   background: #111;
   border-bottom: 2px solid #ff6600;
+  color: #fff;
+}
+
+.app.dark .header h1 {
+  color: #fff;
+}
+
+.app.dark .header button {
+  background: #000 !important;
+  color: #ff6600 !important;
+  border: 1px solid #ff6600 !important;
+}
+
+.app.dark table {
+  background: #1e1e1e;
+  color: #fff;   /* ✅ student names visible */
+  border: none;
+}
+
+.app.dark table tr:nth-child(even) {
+  background: #2a2a2a;
+}
+
+.app.dark table th {
+  background: #ff6600;
+  color: #fff;
+}
+
+.app.dark div[style*="position: fixed"] > div {
+  background: #000 !important;
+  color: #ff6600 !important;
+  border: 2px solid #ff6600;
+}
+
+/* ✅ Dark mode chart background */
+.app.dark .chart-wrapper {
+  background: #000000;
+  box-shadow: 0 2px 6px rgba(255,255,255,0.1);
 }
 
 /* Responsive: Tablets */
@@ -178,7 +242,6 @@ div[style*="position: fixed"] > div {
     text-align: center;
   }
 
-  /* ✅ Table full width on mobile */
   table {
     width: 100% !important;
     display: table !important;
@@ -199,4 +262,24 @@ div[style*="position: fixed"] > div {
   .chart-wrapper > div {
     min-width: 500px;
   }
+}
+
+/* ✅ Chart labels & tooltip fix */
+.recharts-tooltip-wrapper,
+.recharts-default-tooltip,
+.recharts-label tspan,
+.recharts-text,
+.recharts-tooltip-item {
+  color: #000 !important;   /* Light mode */
+  fill: #000 !important;
+  font-weight: 600;
+}
+
+.app.dark .recharts-tooltip-wrapper,
+.app.dark .recharts-default-tooltip,
+.app.dark .recharts-label tspan,
+.app.dark .recharts-text,
+.app.dark .recharts-tooltip-item {
+  color: #fff !important;   /* Dark mode */
+  fill: #fff !important;
 }
