@@ -270,32 +270,16 @@ body.dark, .app.dark {
 .recharts-label tspan,
 .recharts-text,
 .recharts-tooltip-item {
-  color: #000 !important;   /* Light mode text */
+  color: #000 !important;   /* Light mode (black text) */
   fill: #000 !important;
   font-weight: 600;
 }
 
-/* ✅ Dark mode tooltip fix */
 .app.dark .recharts-tooltip-wrapper,
 .app.dark .recharts-default-tooltip,
+.app.dark .recharts-label tspan,
+.app.dark .recharts-text,
 .app.dark .recharts-tooltip-item {
-  background: #000 !important;   /* tooltip background */
-  color: #fff !important;        /* tooltip text */
+  color: #fff !important;   /* Dark mode (white text) */
   fill: #fff !important;
-  border: 1px solid #ff6600;
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-weight: 600;
-}
-
-/* ✅ Fix for modal text in dark mode */
-.app.dark .modal-content {
-  background: #1e1e1e;
-  color: #fff;
-}
-
-.app.dark .modal-header,
-.app.dark .modal-body,
-.app.dark .modal-footer {
-  color: #fff;
 }
