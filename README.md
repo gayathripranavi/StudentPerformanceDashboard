@@ -70,4 +70,8 @@ StudentPerformanceDashboard/
 
 ## Author
 Built with  by Gayathri M
+<img width="1366" height="768" alt="Image" src="https://github.com/user-attachments/assets/b87c3509-c352-4f59-9d0a-8612b10b0215" />
+<img width="1366" height="768" alt="Image" src="https://github.com/user-attachments/assets/5d8bcba4-7fd0-45bf-ae8d-c5e6c0e064d3" />
+<img width="1366" height="768" alt="Image" src="https://github.com/user-attachments/assets/bd5ce89a-7a5f-49cf-927d-710a4d76e0e7" />
+
 
