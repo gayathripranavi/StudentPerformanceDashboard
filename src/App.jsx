@@ -13,16 +13,16 @@ import StudentModal from "./components/StudentModal";
 //student details
 
 const studentData = [
-  { id: 1, name: "Aarav", subject: "Math", score: 85, grade: "B" },
+  { id: 1, name: "Aarav", subject: "Maths", score: 85, grade: "B" },
   { id: 2, name: "Diya", subject: "Science", score: 78, grade: "C" },
   { id: 3, name: "Karan", subject: "English", score: 92, grade: "A" },
-  { id: 4, name: "Maya", subject: "Math", score: 67, grade: "D" },
+  { id: 4, name: "Maya", subject: "Maths", score: 67, grade: "D" },
   { id: 5, name: "Ravi", subject: "Science", score: 88, grade: "B" },
-  { id: 6, name: "Ishita", subject: "History", score: 81, grade: "B" },
+  { id: 6, name: "Ishita", subject: "English", score: 81, grade: "B" },
   { id: 7, name: "Mohan", subject: "Science", score:72, grade: "C" },
   { id: 8, name: "Abi", subject: "Maths", score: 100, grade: "A" },   
   { id: 9, name: "Rai", subject: "Science", score: 94, grade: "A" },
-  { id: 10, name: "Sharma", subject: "History", score: 75, grade: "C" },      
+  { id: 10, name: "Sharma", subject: "English", score: 75, grade: "C" },      
 ];
 
 export default function App() {
