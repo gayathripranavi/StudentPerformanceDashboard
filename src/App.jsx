@@ -13,9 +13,9 @@ import StudentModal from "./components/StudentModal";
 //student details
 
 const studentData = [
-  { id: 1, name: "Aarav", subject: "Maths", score: 85, grade: "B" },
+  { id: 1, name: "Aarav", subject: "Maths", score: 60, grade: "D" },
   { id: 2, name: "Diya", subject: "Science", score: 78, grade: "C" },
-  { id: 3, name: "Karan", subject: "English", score: 92, grade: "A" },
+  { id: 3, name: "Karan", subject: "English", score: 65, grade: "D" },
   { id: 4, name: "Maya", subject: "Maths", score: 67, grade: "D" },
   { id: 5, name: "Ravi", subject: "Science", score: 88, grade: "B" },
   { id: 6, name: "Ishita", subject: "English", score: 81, grade: "B" },
