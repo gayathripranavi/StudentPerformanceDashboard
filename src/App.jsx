@@ -1,5 +1,8 @@
 import React, { useState, useMemo } from "react";
 import "./index.css";
+
+//custom componenets
+
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Filters from "./components/Filters";
@@ -7,13 +10,19 @@ import StudentTable from "./components/StudentTable";
 import SubjectChart from "./components/SubjectChart";
 import StudentModal from "./components/StudentModal";
 
+//student details
+
 const studentData = [
-  { id: 1, name: "Aarav", subject: "Math", score: 85, grade: "A" },
-  { id: 2, name: "Diya", subject: "Science", score: 78, grade: "B" },
+  { id: 1, name: "Aarav", subject: "Math", score: 85, grade: "B" },
+  { id: 2, name: "Diya", subject: "Science", score: 78, grade: "C" },
   { id: 3, name: "Karan", subject: "English", score: 92, grade: "A" },
-  { id: 4, name: "Maya", subject: "Math", score: 67, grade: "C" },
-  { id: 5, name: "Ravi", subject: "Science", score: 88, grade: "A" },
-  { id: 6, name: "Ishita", subject: "History", score: 81, grade: "B" },   
+  { id: 4, name: "Maya", subject: "Math", score: 67, grade: "D" },
+  { id: 5, name: "Ravi", subject: "Science", score: 88, grade: "B" },
+  { id: 6, name: "Ishita", subject: "History", score: 81, grade: "B" },
+  { id: 7, name: "Mohan", subject: "Science", score:72, grade: "C" },
+  { id: 8, name: "Abi", subject: "Maths", score: 100, grade: "A" },   
+  { id: 9, name: "Rai", subject: "Science", score: 94, grade: "A" },
+  { id: 10, name: "Sharma", subject: "History", score: 75, grade: "C" },      
 ];
 
 export default function App() {
@@ -66,12 +75,12 @@ export default function App() {
             onGradeFilter={setGradeFilter}
           />
 
-          {/* ✅ Chart comes first */}
+          {/* Chart comes first */}
           <div className="chart-wrapper">
             <SubjectChart data={chartData} />
           </div>
 
-          {/* ✅ Then table */}
+          {/*  Then table */}
           <StudentTable
             data={filtered}
             onSort={(key) => {

@@ -108,7 +108,7 @@ table {
 table th, table td {
   padding: 0.75rem;
   text-align: left;
-  color: inherit; /* ✅ ensure text visible */
+  color: inherit; /*  ensure text visible */
 }
 
 table th {
@@ -132,7 +132,7 @@ div[style*="position: fixed"] > div {
   border: 2px solid #ff6600;
 }
 
-/* ✅ Chart wrapper background */
+/*  Chart wrapper background */
 .chart-wrapper {
   width: 100%;
   height: 300px;
@@ -144,12 +144,12 @@ div[style*="position: fixed"] > div {
 
 /* ---------------- DARK MODE ---------------- */
 body.dark, .app.dark {
-  background-color: #000; /* ✅ full body black */
+  background-color: #000; /*  full body black */
   color: #fff;
 }
 
 .app.dark .main {
-  background-color: #000; /* ✅ content area black */
+  background-color: #000; /*  content area black */
 }
 
 .app.dark .sidebar {
@@ -198,7 +198,7 @@ body.dark, .app.dark {
   border: 2px solid #ff6600;
 }
 
-/* ✅ Dark mode chart background */
+/*  Dark mode chart background */
 .app.dark .chart-wrapper {
   background: #000000;
   box-shadow: 0 2px 6px rgba(255,255,255,0.1);
@@ -253,7 +253,7 @@ body.dark, .app.dark {
     word-wrap: break-word;
   }
 
-  /* ✅ Chart full width on mobile */
+  /*  Chart full width on mobile */
   .chart-wrapper {
     width: 100% !important;
     height: auto !important;
@@ -266,7 +266,7 @@ body.dark, .app.dark {
   }
 }
 
-/* ✅ Chart labels & tooltip fix */
+/*  Chart labels & tooltip fix */
 .recharts-tooltip-wrapper,
 .recharts-default-tooltip,
 .recharts-label tspan,

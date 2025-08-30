@@ -18,14 +18,14 @@ Includes **filters, sorting, search, charts, modal popups for details, and a dar
 
     Charts — Visual representation of average scores per subject
 
-    Dark Mode Toggle (if implemented)
-
+    Dark Mode Toggle 
 
 ##  Tech Stack
 
     - **React (Vite)**
     - **Recharts** (charts)
-    - **CSS** (custom styling, dark mode support)
+    - **CSS** (custom styling)
+    -**Bootstrap**(responsive)
 
 
 
@@ -71,4 +71,3 @@ StudentPerformanceDashboard/
 ## Author
 Built with  by Gayathri M
 
-![Dashboard Screenshot](assets/logo.jpg)

@@ -1,4 +1,4 @@
-// src/components/StudentModal.js
+
 import React from "react";
 
 export default function StudentModal({ student, onClose }) {
